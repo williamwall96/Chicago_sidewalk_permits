@@ -22,21 +22,18 @@
     crossorigin=""></script>
 
     <!-- Our CSS -->
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     Hello World!
     <!-- The div that holds our map -->
     <div id="mapid"></div>
-
-    <script>
-        d3.json("api/test").then(function(data) {
-            console.log(data);
-        })
-    </script>
+    <div id="bar-chart"></div>
 
     <!-- Our JavaScript -->
-    <script type="text/javascript" src="static/js/logic.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='logic.js') }}"></script>
 
 </body>
 </html>

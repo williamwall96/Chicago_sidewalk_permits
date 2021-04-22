@@ -1,5 +1,5 @@
 # 1. Import 
-from flask import Flask, jsonify, Response, render_template
+from flask import Flask, jsonify, Response, render_template, url_for
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -22,6 +22,28 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
     
+@app.route("/api/permitsPerYear")
+def permitsPerYear():
+#     df = pd.read_sql_query('''
+# select * from current_permits as c
+# union
+# select * from past_permits as p;
+# ''', con=engine)
+    data = [
+        {
+            "Year": 2013,
+            "numPermits": 517
+        },
+        {
+            "Year": 2014,
+            "numPermits": 617
+        },
+        {
+            "Year": 2015,
+            "numPermits": 717
+        },
+    ]
+    return jsonify(data)
 
 @app.route("/api/test")
 def test():
