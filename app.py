@@ -1,5 +1,6 @@
 # 1. Import 
-from flask import Flask, jsonify, Response, render_template
+from flask import Flask, jsonify, Response, render_template, url_for
+from flask_cors import CORS
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -15,6 +16,7 @@ engine = create_engine(connection_string)
 
 # 2. Create an app
 app = Flask(__name__)
+CORS(app)
 
 
 # 3. Define static routes
