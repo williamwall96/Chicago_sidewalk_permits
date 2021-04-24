@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chicago Sidewalk Permits</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -25,9 +25,38 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <!-- Marker cluster JavaScript code -->
+    <script type="text/javascript" src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"></script>
+
+    <!-- Marker cluster CSS -->
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css">
+
+    <!-- Bring in our bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
 </head>
 <body>
-    Hello World!
+    <!-- Our rows function in containers (grid created). -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="h1">Chicago Sidewalk Permits by Year</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div  class = "btn btn-primary" id="2015-button" role="button">2015</div>
+                <div  class = "btn btn-primary" id="2016-button" role="button">2016</div>
+                <div  class = "btn btn-primary" id="2017-button" role="button">2017</div>
+                <div  class = "btn btn-primary" id="2018-button" role="button">2018</div>
+                <div  class = "btn btn-primary" id="2019-button" role="button">2019</div>
+                <div  class = "btn btn-primary" id="button-2020" role="button">2020</div>
+            </div>
+        </div>
+    </div>
     <!-- The div that holds our map -->
     <div id="mapid"></div>
     <div id="bar-chart"></div>
