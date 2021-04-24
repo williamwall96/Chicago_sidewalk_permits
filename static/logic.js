@@ -48,12 +48,12 @@ d3.json("http://127.0.0.1:5000/api/permitsPerYear").then(function(data) {
 
   sortData(data);
 
-  console.log(twentyFifteen);
-  console.log(twentySixteen);
-  console.log(twentySeventeen);
-  console.log(twentyEighteen);
-  console.log(twentyNineteen);
-  console.log(twentyTwenty);
+  // console.log(twentyFifteen);
+  // console.log(twentySixteen);
+  // console.log(twentySeventeen);
+  // console.log(twentyEighteen);
+  // console.log(twentyNineteen);
+  // console.log(twentyTwenty);
 
   var years = {
     "2015": twentyFifteen.length,
@@ -64,61 +64,63 @@ d3.json("http://127.0.0.1:5000/api/permitsPerYear").then(function(data) {
     "2020": twentyTwenty.length
   };
   createBarChart(years);
-  function twentyTwentyMarkers(){
+    function filterMap(filterData){
 
     // Create a new marker cluster group
     var markers = L.markerClusterGroup();
 
     // For loop to map twentyTwenty Data
-    for (var i = 0; i < twentyTwenty.length; i++) {
+    for (var i = 0; i < filterData.length; i++) {
 
       // Set the data latitude property to a variable
-      var latitude = twentyTwenty[i].latitude
+      var latitude = filterData[i].latitude
       
       // Set the data longitude property to a variable
-      var longitude = twentyTwenty[i].longitude
+      var longitude = filterData[i].longitude
 
       // set location and define it to variable
       var location = [latitude, longitude]
 
       // Check the location variable
       if (location) {
-        markers.addLayer(L.marker(location).bindPopup(twentyTwenty[i].business_name));
+        markers.addLayer(L.marker(location).bindPopup(filterData[i].business_name));
       }
 
     }
+    myMap.eachLayer((layer) => {
+
+      myMap.removeLayer(layer);
+        });
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(myMap);
   myMap.addLayer(markers);
   }
 
-  function twentyNineteenMarkers(){
-
-    // Create a new marker cluster group
-    var markers = L.markerClusterGroup();
-
-    // For loop to map twentyTwenty Data
-    for (var i = 0; i < twentyNineteen.length; i++) {
-
-      // Set the data latitude property to a variable
-      var latitude = twentyNineteen[i].latitude
-      
-      // Set the data longitude property to a variable
-      var longitude = twentyNineteen[i].longitude
-
-      // set location and define it to variable
-      var location = [latitude, longitude]
-
-      // Check the location variable
-      if (location) {
-        markers.addLayer(L.marker(location).bindPopup(twentyNineteen[i].business_name));
-      }
-
-    }
-  myMap.addLayer(markers);
-  }
-
-  d3.selectAll('#button-2020').on("click", twentyTwentyMarkers());
-  d3.selectAll('#button-2020').on("click", twentyNineteenMarkers());
-
+  d3.selectAll('#button-2020').on("click", () => {
+    console.log("2020 hits");
+    filterMap(twentyTwenty);
+  });
+  d3.selectAll('#button-2019').on("click", () => {
+    console.log("2019 hits");
+    filterMap(twentyNineteen);
+  });
+  d3.selectAll('#button-2018').on("click", () => {
+    console.log("2018 hits");
+    filterMap(twentyEighteen);
+  });
+  d3.selectAll('#button-2017').on("click", () => {
+    console.log("2017 hits");
+    filterMap(twentySeventeen);
+  });
+  d3.selectAll('#button-2016').on("click", () => {
+    console.log("2016 hits");
+    filterMap(twentySixteen);
+  });
+  d3.selectAll('#button-2015').on("click", () => {
+    console.log("2015 hits");
+    filterMap(twentyFifteen);
+  });
 
 });
 
