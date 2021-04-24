@@ -5,10 +5,10 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import pandas as pd
-
+from config import password
 
 # Database Setup
-connection_string = "postgresql://postgres:password@localhost:5432/chicago_cafe_permits"
+connection_string = f"postgresql://postgres:{password}@localhost:5432/chicago_cafe_permits"
 # connection_string = "sqlite:///chicago_permits.sqlite"
 engine = create_engine(connection_string)
 
@@ -22,25 +22,25 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
     
-# @app.route("/api/permitsPerYear")
-# def permitsPerYear():
-#     df = pd.read_sql_query('''
-# select * from current_permits as c
-# union
-# select * from past_permits as p;
-# ''', con=engine)
-#     data = df
-#     return jsonify(data)
-
-@app.route("/api/test")
-def test():
+@app.route("/api/permitsPerYear")
+def permitsPerYear():
     df = pd.read_sql_query('''
 select * from current_permits as c
 union
 select * from past_permits as p;
 ''', con=engine)
+    data = df
+    # return jsonify(data)
 
-    # return df.iloc[0:10].to_json(orient="records")
+# @app.route("/api/test")
+# def test():
+#     df = pd.read_sql_query('''
+# select * from current_permits as c
+# union
+# select * from past_permits as p;
+# ''', con=engine)
+
+    #return df.iloc[0:10].to_json(orient="records")
     return Response(df.to_json(orient="records"), mimetype='application/json')
 
 
