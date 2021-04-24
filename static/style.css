@@ -1,0 +1,29 @@
+/* Remove the default margin and padding from the body. */
+body {
+    padding: 0;
+    margin: 0;
+    background: teal;
+  }
+  
+  /* Set map, body, and html to 100% of the screen size. */
+  #mapid,
+  body,
+  html {
+    height: 90%;
+  }
+
+  .h1 {
+    text-align: center;
+    background: teal;
+    color: whitesmoke;
+  }
+
+  .container {
+    background: teal;
+  };
+
+  .btn {
+    background: whitesmoke;
+    color: whitesmoke;
+  }
+

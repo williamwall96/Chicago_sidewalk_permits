@@ -8,8 +8,8 @@ import pandas as pd
 
 
 # Database Setup
-# connection_string = f"postgresql://postgres:{password}@localhost:5432/chicago_cafe_permits"
-connection_string = "sqlite:///chicago_permits.sqlite"
+connection_string = "postgresql://postgres:password@localhost:5432/chicago_cafe_permits"
+# connection_string = "sqlite:///chicago_permits.sqlite"
 engine = create_engine(connection_string)
 
 
@@ -22,28 +22,15 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
     
-@app.route("/api/permitsPerYear")
-def permitsPerYear():
+# @app.route("/api/permitsPerYear")
+# def permitsPerYear():
 #     df = pd.read_sql_query('''
 # select * from current_permits as c
 # union
 # select * from past_permits as p;
 # ''', con=engine)
-    data = [
-        {
-            "Year": 2013,
-            "numPermits": 517
-        },
-        {
-            "Year": 2014,
-            "numPermits": 617
-        },
-        {
-            "Year": 2015,
-            "numPermits": 717
-        },
-    ]
-    return jsonify(data)
+#     data = df
+#     return jsonify(data)
 
 @app.route("/api/test")
 def test():
@@ -52,8 +39,9 @@ select * from current_permits as c
 union
 select * from past_permits as p;
 ''', con=engine)
+
     # return df.iloc[0:10].to_json(orient="records")
-    return Response(df.iloc[0:10].to_json(orient="records"), mimetype='application/json')
+    return Response(df.to_json(orient="records"), mimetype='application/json')
 
 
 
