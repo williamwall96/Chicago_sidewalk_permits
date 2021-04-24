@@ -22,15 +22,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
     
-# @app.route("/api/permitsPerYear")
-# def permitsPerYear():
-#     df = pd.read_sql_query('''
-# select * from current_permits as c
-# union
-# select * from past_permits as p;
-# ''', con=engine)
-#     data = df
-#     return jsonify(data)
 
 @app.route("/api/test")
 def test():
@@ -43,7 +34,15 @@ select * from past_permits as p;
     # return df.iloc[0:10].to_json(orient="records")
     return Response(df.to_json(orient="records"), mimetype='application/json')
 
-
+# @app.route("/api/permitsPerYear")
+# def permitsPerYear():
+#     df = pd.read_sql_query('''
+# select * from current_permits as c
+# union
+# select * from past_permits as p;
+# ''', con=engine)
+#     data = df
+#     return jsonify(data)
 
 # 4. Define main behavior
 if __name__ == "__main__":
