@@ -8,7 +8,7 @@ import pandas as pd
 
 
 # Database Setup
-connection_string = "postgresql://postgres:password@localhost:5432/chicago_cafe_permits"
+connection_string = "postgresql://postgres:woodlands@localhost:5432/chicago_cafe_permits"
 # connection_string = "sqlite:///chicago_permits.sqlite"
 engine = create_engine(connection_string)
 

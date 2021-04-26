@@ -113,19 +113,6 @@ d3.json("http://127.0.0.1:5000/api/test").then(function(data) {
     filterMap(twentyFifteen);
   });
 
-});
-
-function createMap() {
-  myMap = L.map("mapid", {
-    center: [41.87, -87.63],
-    zoom: 13
-  });
-
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(myMap);
-};
-
 // BAR CHART CODE FOR PROJECT 2
 // function createBarChart(data) {
 //   console.log("create bar chart running")
@@ -144,3 +131,18 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //       };
       
 //       Plotly.newPlot("bar-chart", chartData, layout);
+
+// };
+
+function createMap() {
+  myMap = L.map("mapid", {
+    center: [41.87, -87.63],
+    zoom: 13
+  });
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(myMap);
+};
+
+});
