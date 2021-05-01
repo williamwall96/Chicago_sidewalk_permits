@@ -1,6 +1,6 @@
-d3.json("http://127.0.0.1:5000/api/test").then(function(data) {
+
+d3.json("http://127.0.0.1:5000/api/permitsPerYear").then(function(data) {
   console.log(data)
-  // createBarChart(data)
   createMap(data);
 
   var twentyFifteen = []
@@ -55,7 +55,16 @@ d3.json("http://127.0.0.1:5000/api/test").then(function(data) {
   // console.log(twentyNineteen);
   // console.log(twentyTwenty);
 
-  function filterMap(filterData){
+  var years = {
+    "2015": twentyFifteen.length,
+    "2016": twentySixteen.length,
+    "2017": twentySeventeen.length,
+    "2018": twentyEighteen.length,
+    "2019": twentyNineteen.length,
+    "2020": twentyTwenty.length
+  };
+  createBarChart(years);
+    function filterMap(filterData){
 
     // Create a new marker cluster group
     var markers = L.markerClusterGroup();
@@ -113,27 +122,8 @@ d3.json("http://127.0.0.1:5000/api/test").then(function(data) {
     filterMap(twentyFifteen);
   });
 
-// BAR CHART CODE FOR PROJECT 2
-// function createBarChart(data) {
-//   console.log("create bar chart running")
-//     var trace1 = {
-//         x: data.map(d => d.year),
-//         y: data.map(d => d.numPermits),
-//         type: "bar"
-//       };
-     
-//       var chartData = [trace1];
-      
-//       var layout = {
-//         title: "'Bar' Chart",
-//         xaxis: { title: "Year"},
-//         yaxis: { title: "Number of Sidewalk Cafe Permits"}
-//       };
-      
-//       Plotly.newPlot("bar-chart", chartData, layout);
 
-// };
-
+  
 function createMap() {
   myMap = L.map("mapid", {
     center: [41.87, -87.63],
@@ -146,3 +136,21 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 };
 
 });
+// BAR CHART CODE FOR PROJECT 2
+function createBarChart(data) {
+  console.log("create bar chart running")
+    var trace1 = {
+       x: Object.keys(data),
+       y: Object.values(data),
+        type: "bar"
+      };
+      var chartData = [trace1];
+      console.log(chartData)
+      var layout = {
+        title: "Chicago Sidewalk Permits",
+        xaxis: { title: "Year"},
+        yaxis: { title: "Number of Sidewalk Cafe Permits"}
+      };
+      Plotly.newPlot("bar-chart", chartData, layout)
+};
+
