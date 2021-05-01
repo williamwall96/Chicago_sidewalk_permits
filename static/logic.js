@@ -122,8 +122,8 @@ d3.json("http://127.0.0.1:5000/api/permitsPerYear").then(function(data) {
     filterMap(twentyFifteen);
   });
 
-});
 
+  
 function createMap() {
   myMap = L.map("mapid", {
     center: [41.87, -87.63],
@@ -135,21 +135,22 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(myMap);
 };
 
+});
 // BAR CHART CODE FOR PROJECT 2
 function createBarChart(data) {
   console.log("create bar chart running")
     var trace1 = {
-        x: Object.keys(data),
-        y: Object.values(data),
+       x: Object.keys(data),
+       y: Object.values(data),
         type: "bar"
       };
-     
       var chartData = [trace1];
       console.log(chartData)
       var layout = {
-        title: "'Bar' Chart",
+        title: "Chicago Sidewalk Permits",
         xaxis: { title: "Year"},
         yaxis: { title: "Number of Sidewalk Cafe Permits"}
       };
       Plotly.newPlot("bar-chart", chartData, layout)
 };
+
