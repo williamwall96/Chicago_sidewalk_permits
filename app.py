@@ -8,8 +8,8 @@ import pandas as pd
 from config import password
 
 # Database Setup
-connection_string = "postgresql://postgres:woodlands@localhost:5432/chicago_cafe_permits"
-# connection_string = "sqlite:///chicago_permits.sqlite"
+
+connection_string = "sqlite:///chicago_permits.sqlite"
 engine = create_engine(connection_string)
 
 
