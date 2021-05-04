@@ -42,7 +42,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="h1">Chicago Sidewalk Permits by Year</div>
+               <div class="h1">Chicago Sidewalk Permits by Year</div> 
             </div>
         </div>
 
@@ -59,10 +59,30 @@
     </div>
     <!-- The div that holds our map -->
     <div id="mapid"></div>
-    <div id="bar-chart"></div>
+    <div id="bar-chart">
+
+    </div>
+    <div class="granim-light">
+        <canvas id="granim-canvas" width="1500" height="150"></canvas>
+    </div>
 
     <!-- Our JavaScript -->
     <script type="text/javascript" src="{{ url_for('static', filename='logic.js') }}"></script>
-
+    <script type="text/javascript" src="{{ url_for('static', filename='granim.min.js') }}"></script>
+    <script>
+        var granimInstance = new Granim({
+       element: '#granim-canvas',
+       name: 'granim',
+       opacity: [1, 1],
+       states : {
+           "default-state": {
+               gradients: [
+                   ['#77e4e6', '#ffffff'],
+                   ['#ffffff', '#ed1515']
+               ]
+           }
+          }
+    });
+    </script>
 </body>
 </html>
