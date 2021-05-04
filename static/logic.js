@@ -1,6 +1,6 @@
-d3.json("http://127.0.0.1:5000/api/test").then(function(data) {
+
+d3.json("http://127.0.0.1:5000/api/permitsPerYear").then(function(data) {
   console.log(data)
-  // createBarChart(data)
   createMap(data);
 
   var twentyFifteen = []
@@ -64,8 +64,12 @@ d3.json("http://127.0.0.1:5000/api/test").then(function(data) {
     "2020": twentyTwenty.length
   };
   createBarChart(years);
+<<<<<<< HEAD
 
   function filterMap(filterData){
+=======
+    function filterMap(filterData){
+>>>>>>> 78a34bc1a4dda010847ca9d8a39a163671b934e9
 
     // Create a new marker cluster group
     var markers = L.markerClusterGroup();
@@ -123,8 +127,12 @@ d3.json("http://127.0.0.1:5000/api/test").then(function(data) {
     filterMap(twentyFifteen);
   });
 
+<<<<<<< HEAD
   
+=======
+>>>>>>> 78a34bc1a4dda010847ca9d8a39a163671b934e9
 
+  
 function createMap() {
   myMap = L.map("mapid", {
     center: [41.87, -87.63],
@@ -137,6 +145,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 };
 
 });
+<<<<<<< HEAD
 
 function createBarChart(data) {
   console.log("bar chart running")
@@ -157,3 +166,23 @@ function createBarChart(data) {
   Plotly.newPlot("bar-chart", chartData, layout)
 
 };
+=======
+// BAR CHART CODE FOR PROJECT 2
+function createBarChart(data) {
+  console.log("create bar chart running")
+    var trace1 = {
+       x: Object.keys(data),
+       y: Object.values(data),
+        type: "bar"
+      };
+      var chartData = [trace1];
+      console.log(chartData)
+      var layout = {
+        title: "Chicago Sidewalk Permits",
+        xaxis: { title: "Year"},
+        yaxis: { title: "Number of Sidewalk Cafe Permits"}
+      };
+      Plotly.newPlot("bar-chart", chartData, layout)
+};
+
+>>>>>>> 78a34bc1a4dda010847ca9d8a39a163671b934e9
